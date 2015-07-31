@@ -17,28 +17,26 @@ import java.util.Scanner;
 public class CompleteParentheses {
 	public static void main(String[] args) {
 		LinkedListStack<String> stack = new LinkedListStack<String>();
-		System.out.println("ÊäÈëÖ»ÓĞÓÒÀ¨ºÅµÄ±í´ïÊ½");
+		System.out.println("è¾“å…¥åªæœ‰æœ‰æ‹¬å·çš„è¡¨è¾¾å¼");
 		Scanner in = new Scanner(System.in);
-		boolean end = false;
-		while(!end){
-			String input = in.next();
-			System.out.println(input);
-			if("end".equalsIgnoreCase(input)){
-				end = true;
-			}else if(input.equals(")")){
+		String input = in.next().trim();
+		char[] values = input.toCharArray();
+		for (char value : values) {
+			if(value==')'){
 				String op1 = stack.pop();
 				String op = stack.pop();
 				String op2 = stack.pop();
 				stack.push("("+op2+op+op1+")");
 			}else {
-				stack.push(input);
+				stack.push(String.valueOf(value));
 			}
 		}
-		System.out.println(stack.peek());
-		StringBuilder sb = new StringBuilder();
-		for (String item : stack) {
-			sb.append(item);
-		}
-		System.out.println(sb.toString());
+//		System.out.println(stack.peek());
+//		StringBuilder sb = new StringBuilder();
+//		for (String item : stack) {
+//			sb.append(item);
+//		}
+//		System.out.println(sb.toString());
+		System.out.println(stack.toString());
 	}
 }
